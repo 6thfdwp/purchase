@@ -2,7 +2,7 @@ require 'bigdecimal'
 
 # Public: Tax rate calculator for different types of Item object
 #
-# It is responsible for calculating proper tax
+# It is responsible for calculating proper tax rate
 # will be used by Purchase object to further calcualte tax price
 class TaxRater
     # Get/Set for basic and imported tax rate

@@ -7,7 +7,7 @@ require 'bigdecimal'
 # Sum the tax and price for all items and print the receipt
 class Purchase
     # Pulibc: Get/Set for an Array of purchased records
-    # each of which is an Array with two elements: [quantity, Item object]
+    # each of which is an Array with two elements: [<quantity>, <Item object>]
     attr_accessor :records
 
     # Public: Initialize a purchase
@@ -62,16 +62,17 @@ class Purchase
     #
     # Returns total taxes and price for all items
     def print_receipt (result)
-        result = self.calculate
         taxes, total = 0, 0
+        puts "-" * 50
         result.each do |each|
             quantity, name, tax, tprice = each[:quantity], each[:name], each[:tax] , each[:tprice]
-            puts "\t#{quantity}, #{name}, #{'%.2f' % tprice.to_f}"
+            puts "#{quantity}, #{name}, #{'%.2f' % tprice.to_f}"
             taxes += tax
             total += tprice
         end
-        puts "\n\tSales Taxes: #{'%.2f' % taxes.to_f}"
-        puts "\tTotal: #{'%.2f' % total.to_f}"
+        puts "\nSales Taxes: #{'%.2f' % taxes.to_f}"
+        puts "Total: #{'%.2f' % total.to_f}"
+        puts "-" * 50
         return taxes, total
     end
 end
